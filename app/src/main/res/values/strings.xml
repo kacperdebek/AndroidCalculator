@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Calculator</string>
     <string name="_0">0</string>
     <string name="_dot">.</string>
     <string name="_equals">=</string>
