@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity implements View.OnClickListener {
     private TextView onScreenValueView;
+    private boolean blockOperations = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,6 +18,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
         onScreenValueView = findViewById(R.id.onScreenValueView);
+
         Button zero = findViewById(R.id.button_0);
         zero.setOnClickListener(this);
 
@@ -75,6 +77,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        String resName = getResources().getResourceEntryName(v.getId());
+        if (onScreenValueView.getText().length() > 9 && Character.isDigit(resName.charAt(resName.length() - 1))) {
+            return;
+        }
         switch (v.getId()) {
             case R.id.button_0:
                 onScreenValueView.append("0");
@@ -107,16 +113,16 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 onScreenValueView.append("9");
                 break;
             case R.id.button_x:
-                onScreenValueView.append("x");
+                //onScreenValueView.append("x");
                 break;
             case R.id.button_plus:
-                onScreenValueView.append("+");
+                //onScreenValueView.append("+");
                 break;
             case R.id.button_minus:
-                onScreenValueView.append("-");
+                //onScreenValueView.append("-");
                 break;
             case R.id.button_division:
-                onScreenValueView.append("÷");
+                //onScreenValueView.append("÷");
                 break;
             case R.id.button_dot:
                 onScreenValueView.append(".");
@@ -131,7 +137,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 }
                 break;
             case R.id.button_equals:
-                onScreenValueView.setText("");
+                //onScreenValueView.setText("");
                 break;
             default:
                 break;
