@@ -9,19 +9,21 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends Activity implements View.OnClickListener {
-    Operation currentOperation = Operation.NONE;
+    private Operation currentOperation = Operation.NONE;
     private TextView onScreenValueView;
+    private TextView onScreenSignView;
     private double firstOperand = 0.0;
     private double secondOperand = 0.0;
-
+    private boolean secondNumInputStarted = false;
     @Override
     public void onClick(View v) {
         String resName = getResources().getResourceEntryName(v.getId());
         if (onScreenValueView.getText().length() > 9 && Character.isDigit(resName.charAt(resName.length() - 1))) { //restrict input screen to 10 characters
             return;
         }
-        if (currentOperation != Operation.NONE && Character.isDigit(resName.charAt(resName.length() - 1))) {
+        if (currentOperation != Operation.NONE && Character.isDigit(resName.charAt(resName.length() - 1)) && !secondNumInputStarted) {
             onScreenValueView.setText("");
+            secondNumInputStarted = true;
         }
         switch (v.getId()) {
             case R.id.button_0:
@@ -60,6 +62,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 }
                 currentOperation = Operation.MULTIPLY;
                 firstOperand = Double.parseDouble(onScreenValueView.getText().toString());
+                onScreenSignView.setText("x");
                 break;
             case R.id.button_plus:
                 if (onScreenValueView.getText().length() == 0) {
@@ -67,6 +70,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 }
                 currentOperation = Operation.ADD;
                 firstOperand = Double.parseDouble(onScreenValueView.getText().toString());
+                onScreenSignView.setText("+");
                 break;
             case R.id.button_minus:
                 if (onScreenValueView.getText().length() == 0) {
@@ -74,6 +78,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 }
                 currentOperation = Operation.SUBTRACT;
                 firstOperand = Double.parseDouble(onScreenValueView.getText().toString());
+                onScreenSignView.setText("-");
                 break;
             case R.id.button_division:
                 if (onScreenValueView.getText().length() == 0) {
@@ -81,6 +86,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 }
                 currentOperation = Operation.DIVIDE;
                 firstOperand = Double.parseDouble(onScreenValueView.getText().toString());
+                onScreenSignView.setText("/");
                 break;
             case R.id.button_dot:
                 if (!onScreenValueView.getText().toString().contains(".")) {        //only one dot at a time is allowed in an expression
@@ -89,6 +95,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.button_clear:
                 onScreenValueView.setText("");
+                onScreenSignView.setText("");
+                secondNumInputStarted = false;
                 currentOperation = Operation.NONE;
                 break;
             case R.id.button_back:
@@ -117,9 +125,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
                         if (secondOperand != 0) {
                             onScreenValueView.setText(String.valueOf(firstOperand / secondOperand));
                         } else
-                            onScreenValueView.setText("ERROR");
+                            onScreenValueView.setText(R.string._error);
                         break;
                 }
+                onScreenSignView.setText("");
+                firstOperand = Double.parseDouble(onScreenValueView.getText().toString());
+                secondNumInputStarted = false;
                 break;
             default:
                 break;
@@ -133,7 +144,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
         onScreenValueView = findViewById(R.id.onScreenValueView);
-
+        onScreenSignView = findViewById(R.id.operationSign);
         Button zero = findViewById(R.id.button_0);
         zero.setOnClickListener(this);
 

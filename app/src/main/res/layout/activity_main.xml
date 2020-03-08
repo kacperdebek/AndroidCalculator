@@ -33,11 +33,11 @@
         android:id="@+id/onScreenValueView"
         android:layout_width="317dp"
         android:layout_height="75dp"
-        android:freezesText="true"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
+        android:freezesText="true"
         android:gravity="end"
         android:textAlignment="textEnd"
         android:textSize="50sp"
@@ -224,4 +224,13 @@
         app:layout_constraintBottom_toTopOf="@+id/button_7"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <TextView
+        android:id="@+id/operationSign"
+        android:layout_width="33dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
