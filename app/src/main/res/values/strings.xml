@@ -19,4 +19,7 @@
     <string name="_c">C</string>
     <string name="_backarrow">←</string>
     <string name="_error">ERROR</string>
+    <string name="basic_calculator">Basic Calculator</string>
+    <string name="advanced_calculator">Advanced Calculator</string>
+    <string name="about">About</string>
 </resources>
