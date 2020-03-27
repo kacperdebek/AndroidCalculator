@@ -8,7 +8,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class BasicCalculator extends Activity implements View.OnClickListener {
+public class AdvancedCalculator extends Activity implements View.OnClickListener {
     private Operation currentOperation = Operation.NONE;
     private TextView onScreenValueView;
     private TextView onScreenSignView;
