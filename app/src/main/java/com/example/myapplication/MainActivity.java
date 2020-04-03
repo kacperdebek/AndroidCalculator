@@ -33,7 +33,7 @@ public class MainActivity extends Activity {
         });
         b3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent myIntent = new Intent(view.getContext(), BasicCalculator.class);
+                Intent myIntent = new Intent(view.getContext(), AboutSection.class);
                 startActivity(myIntent);
             }
         });
