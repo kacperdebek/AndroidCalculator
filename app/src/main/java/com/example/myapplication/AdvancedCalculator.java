@@ -143,7 +143,7 @@ public class AdvancedCalculator extends Activity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.basiccalc_layout);
+        setContentView(R.layout.advancedcalc_layout);
         onScreenValueView = findViewById(R.id.onScreenValueView);
         onScreenSignView = findViewById(R.id.operationSign);
         Button zero = findViewById(R.id.button_0);

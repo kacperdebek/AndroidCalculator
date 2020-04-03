@@ -22,4 +22,13 @@
     <string name="basic_calculator">Basic Calculator</string>
     <string name="advanced_calculator">Advanced Calculator</string>
     <string name="about">About</string>
+    <string name="sin">sin</string>
+    <string name="sqrt">√</string>
+    <string name="cos">cos</string>
+    <string name="x_squared">x^2</string>
+    <string name="tan">tan</string>
+    <string name="x_power_y">x^y</string>
+    <string name="ln">ln</string>
+    <string name="log">log</string>
+    <string name="plus_minus">±</string>
 </resources>
