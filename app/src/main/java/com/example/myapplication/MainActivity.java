@@ -14,10 +14,11 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.basiccalc_layout);
+        setContentView(R.layout.activity_main);
         Button b1 = findViewById(R.id.button_basic);
         Button b2 = findViewById(R.id.button_advanced);
         Button b3 = findViewById(R.id.button_about);
+        Button b4 = findViewById(R.id.button_exit);
         b1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent myIntent = new Intent(view.getContext(), BasicCalculator.class);
@@ -34,6 +35,12 @@ public class MainActivity extends Activity {
             public void onClick(View view) {
                 Intent myIntent = new Intent(view.getContext(), BasicCalculator.class);
                 startActivity(myIntent);
+            }
+        });
+        b4.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                finish();
+                System.exit(0);
             }
         });
     }
