@@ -128,25 +128,28 @@ public class BasicCalculator extends Activity implements View.OnClickListener {
                 if (currentOperation != Operation.NONE) {
                     secondOperand = Double.parseDouble(onScreenValueView.getText().toString());
                 }
+                String result = "";
                 switch (currentOperation) {
                     case NONE:
                         break;
                     case ADD:
-                        onScreenValueView.setText(String.valueOf(firstOperand + secondOperand));
+                        result = String.valueOf(firstOperand + secondOperand);
                         break;
                     case SUBTRACT:
-                        onScreenValueView.setText(String.valueOf(firstOperand - secondOperand));
+                        result = String.valueOf(firstOperand - secondOperand);
                         break;
                     case MULTIPLY:
-                        onScreenValueView.setText(String.valueOf(firstOperand * secondOperand));
+                        result = String.valueOf(firstOperand * secondOperand);
                         break;
                     case DIVIDE:
                         if (secondOperand != 0) {
-                            onScreenValueView.setText(String.valueOf(firstOperand / secondOperand));
+                            result = String.valueOf(firstOperand / secondOperand);
                         } else
-                            onScreenValueView.setText(R.string._error);
+                            result = "ERROR";
                         break;
                 }
+                result = result.contains(".") ? result.replaceAll("0*$", "").replaceAll("\\.$", "") : result; //remove trailing zeroes
+                onScreenValueView.setText(result);
                 onScreenSignView.setText("");
                 if (!onScreenValueView.getText().toString().equals("ERROR")) {
                     firstOperand = Double.parseDouble(onScreenValueView.getText().toString());

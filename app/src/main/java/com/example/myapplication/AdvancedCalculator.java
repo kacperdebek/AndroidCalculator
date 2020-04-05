@@ -207,49 +207,52 @@ public class AdvancedCalculator extends Activity implements View.OnClickListener
                 if (currentOperation != Operation.NONE) {
                     secondOperand = Double.parseDouble(onScreenValueView.getText().toString());
                 }
+                String result = "";
                 switch (currentOperation) {
                     case NONE:
                         break;
                     case ADD:
-                        onScreenValueView.setText(String.valueOf(firstOperand + secondOperand));
+                        result = String.valueOf(firstOperand + secondOperand);
                         break;
                     case SUBTRACT:
-                        onScreenValueView.setText(String.valueOf(firstOperand - secondOperand));
+                        result = String.valueOf(firstOperand - secondOperand);
                         break;
                     case MULTIPLY:
-                        onScreenValueView.setText(String.valueOf(firstOperand * secondOperand));
+                        result = String.valueOf(firstOperand * secondOperand);
                         break;
                     case DIVIDE:
                         if (secondOperand != 0) {
-                            onScreenValueView.setText(String.valueOf(firstOperand / secondOperand));
+                            result = String.valueOf(firstOperand / secondOperand);
                         } else
-                            onScreenValueView.setText(R.string._error);
+                            result = "ERROR";
                         break;
                     case SINE:
-                        onScreenValueView.setText(String.valueOf(sin(firstOperand)));
+                        result = String.valueOf(sin(firstOperand));
                         break;
                     case COSINE:
-                        onScreenValueView.setText(String.valueOf(cos(firstOperand)));
+                        result = String.valueOf(cos(firstOperand));
                         break;
                     case TANGENT:
-                        onScreenValueView.setText(String.valueOf(tan(firstOperand)));
+                        result = String.valueOf(tan(firstOperand));
                         break;
                     case LOG:
-                        onScreenValueView.setText(String.valueOf(log10(firstOperand)));
+                        result = String.valueOf(log10(firstOperand));
                         break;
                     case LN:
-                        onScreenValueView.setText(String.valueOf(log(firstOperand)));
+                        result = String.valueOf(log(firstOperand));
                         break;
                     case SQRT:
-                        onScreenValueView.setText(String.valueOf(sqrt(firstOperand)));
+                        result = String.valueOf(sqrt(firstOperand));
                         break;
                     case XPOW2:
-                        onScreenValueView.setText(String.valueOf(pow(firstOperand, 2)));
+                        result = String.valueOf(pow(firstOperand, 2));
                         break;
                     case XPOWY:
-                        onScreenValueView.setText(String.valueOf(pow(firstOperand, secondOperand)));
+                        result = String.valueOf(pow(firstOperand, secondOperand));
                         break;
                 }
+                result = result.contains(".") ? result.replaceAll("0*$", "").replaceAll("\\.$", "") : result; //remove trailing zeroes
+                onScreenValueView.setText(result);
                 onScreenSignView.setText("");
                 if (!onScreenValueView.getText().toString().equals("ERROR")) {
                     firstOperand = Double.parseDouble(onScreenValueView.getText().toString());
