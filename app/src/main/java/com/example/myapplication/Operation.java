@@ -10,5 +10,6 @@ public enum Operation {
     COSINE,
     TANGENT,
     LOG,
-    LN
+    LN,
+    SQRT
 }

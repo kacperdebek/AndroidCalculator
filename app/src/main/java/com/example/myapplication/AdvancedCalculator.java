@@ -12,6 +12,7 @@ import static java.lang.Math.cos;
 import static java.lang.Math.log;
 import static java.lang.Math.log10;
 import static java.lang.Math.sin;
+import static java.lang.Math.sqrt;
 import static java.lang.Math.tan;
 
 public class AdvancedCalculator extends Activity implements View.OnClickListener {
@@ -174,7 +175,12 @@ public class AdvancedCalculator extends Activity implements View.OnClickListener
                 }
                 break;
             case R.id.button_sqrt:
-                //square root
+                if (onScreenValueView.getText().length() == 0) {
+                    break;
+                }
+                currentOperation = Operation.SQRT;
+                firstOperand = Double.parseDouble(onScreenValueView.getText().toString());
+                onScreenSignView.setText(R.string.sqrt);
                 break;
             case R.id.button_equals:
                 if (!secondNumInputStarted
@@ -182,7 +188,8 @@ public class AdvancedCalculator extends Activity implements View.OnClickListener
                         && currentOperation != Operation.COSINE
                         && currentOperation != Operation.TANGENT
                         && currentOperation != Operation.LOG
-                        && currentOperation != Operation.LN) {
+                        && currentOperation != Operation.LN
+                        && currentOperation != Operation.SQRT) {
                     break;
                 }
                 if (currentOperation != Operation.NONE) {
@@ -221,6 +228,8 @@ public class AdvancedCalculator extends Activity implements View.OnClickListener
                     case LN:
                         onScreenValueView.setText(String.valueOf(log(firstOperand)));
                         break;
+                    case SQRT:
+                        onScreenValueView.setText(String.valueOf(sqrt(firstOperand)));
                 }
                 onScreenSignView.setText("");
                 if (!onScreenValueView.getText().toString().equals("ERROR")) {
