@@ -26,6 +26,9 @@ public class AdvancedCalculator extends Activity implements View.OnClickListener
             onScreenValueView.setText("");
             secondNumInputStarted = true;
         }
+        if (onScreenValueView.getText().toString().equals("ERROR") && !resName.equals("button_clear")) {
+            return;
+        }
         switch (v.getId()) {
             case R.id.button_0:
                 onScreenValueView.append("0");
@@ -128,7 +131,16 @@ public class AdvancedCalculator extends Activity implements View.OnClickListener
                 //x^y
                 break;
             case R.id.button_sign:
-                //change sign (+/-)
+                if (onScreenValueView.getText().toString().length() <= 0
+                        || (currentOperation != Operation.NONE && !secondNumInputStarted)) {
+                    break;
+                }
+                if (onScreenValueView.getText().charAt(0) == '-') {
+                    onScreenValueView.setText(onScreenValueView.getText().toString().substring(1));
+                } else if (onScreenValueView.getText().length() <= 9) {
+                    String updated = "-" + onScreenValueView.getText().toString();
+                    onScreenValueView.setText(updated);
+                }
                 break;
             case R.id.button_sqrt:
                 //square root
@@ -157,8 +169,11 @@ public class AdvancedCalculator extends Activity implements View.OnClickListener
                         break;
                 }
                 onScreenSignView.setText("");
-                firstOperand = Double.parseDouble(onScreenValueView.getText().toString());
+                if (!onScreenValueView.getText().toString().equals("ERROR")) {
+                    firstOperand = Double.parseDouble(onScreenValueView.getText().toString());
+                }
                 secondNumInputStarted = false;
+                currentOperation = Operation.NONE;
                 break;
             default:
                 break;

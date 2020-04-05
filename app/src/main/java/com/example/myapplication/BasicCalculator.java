@@ -26,6 +26,9 @@ public class BasicCalculator extends Activity implements View.OnClickListener {
             onScreenValueView.setText("");
             secondNumInputStarted = true;
         }
+        if (onScreenValueView.getText().toString().equals("ERROR") && !resName.equals("button_clear")) {
+            return;
+        }
         switch (v.getId()) {
             case R.id.button_0:
                 onScreenValueView.append("0");
@@ -145,7 +148,9 @@ public class BasicCalculator extends Activity implements View.OnClickListener {
                         break;
                 }
                 onScreenSignView.setText("");
-                firstOperand = Double.parseDouble(onScreenValueView.getText().toString());
+                if (!onScreenValueView.getText().toString().equals("ERROR")) {
+                    firstOperand = Double.parseDouble(onScreenValueView.getText().toString());
+                }
                 secondNumInputStarted = false;
                 currentOperation = Operation.NONE;
                 break;
