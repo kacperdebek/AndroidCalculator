@@ -106,6 +106,18 @@ public class BasicCalculator extends Activity implements View.OnClickListener {
                     onScreenValueView.setText(current.substring(0, current.length() - 1));
                 }
                 break;
+            case R.id.button_sign:
+                if (onScreenValueView.getText().toString().length() <= 0
+                        || (currentOperation != Operation.NONE && !secondNumInputStarted)) {
+                    break;
+                }
+                if (onScreenValueView.getText().charAt(0) == '-') {
+                    onScreenValueView.setText(onScreenValueView.getText().toString().substring(1));
+                } else if (onScreenValueView.getText().length() <= 9) {
+                    String updated = "-" + onScreenValueView.getText().toString();
+                    onScreenValueView.setText(updated);
+                }
+                break;
             case R.id.button_equals:
                 if (!secondNumInputStarted) {
                     break;
@@ -204,5 +216,7 @@ public class BasicCalculator extends Activity implements View.OnClickListener {
         Button back = findViewById(R.id.button_back);
         back.setOnClickListener(this);
 
+        Button signChange = findViewById(R.id.button_sign);
+        signChange.setOnClickListener(this);
     }
 }

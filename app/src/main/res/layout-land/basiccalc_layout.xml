@@ -20,6 +20,18 @@
         app:layout_constraintStart_toEndOf="@+id/button_0" />
 
     <Button
+        android:id="@+id/button_sign"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/plus_minus"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/button_7"
+        app:layout_constraintStart_toEndOf="@+id/button_clear" />
+
+    <Button
         android:id="@+id/button_0"
         android:layout_width="70dp"
         android:layout_height="70dp"
@@ -76,17 +88,17 @@
     <Button
         android:id="@+id/button_plus"
         android:layout_width="70dp"
-        android:layout_height="148dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginRight="36dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
         android:layout_marginBottom="8dp"
         android:text="@string/_plus"
         android:textSize="40sp"
         app:layout_constraintBottom_toTopOf="@+id/button_equals"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/button_9" />
 
     <Button
@@ -98,7 +110,7 @@
         android:layout_marginBottom="8dp"
         android:text="@string/_x"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/button_8"
+        app:layout_constraintBottom_toTopOf="@+id/button_9"
         app:layout_constraintStart_toEndOf="@+id/button_division" />
 
     <Button
@@ -110,19 +122,23 @@
         android:layout_marginBottom="8dp"
         android:text="@string/_division"
         android:textSize="40sp"
-        app:layout_constraintBottom_toTopOf="@+id/button_7"
-        app:layout_constraintStart_toEndOf="@+id/button_clear" />
+        app:layout_constraintBottom_toTopOf="@+id/button_8"
+        app:layout_constraintStart_toEndOf="@+id/button_sign" />
 
     <Button
         android:id="@+id/button_minus"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:text="@string/_minus"
         android:textSize="40sp"
-        app:layout_constraintBottom_toTopOf="@+id/button_9"
+        app:layout_constraintBottom_toTopOf="@+id/button_plus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toEndOf="@+id/button_x" />
 
     <Button
