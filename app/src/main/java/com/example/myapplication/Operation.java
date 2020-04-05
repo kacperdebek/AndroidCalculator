@@ -11,5 +11,7 @@ public enum Operation {
     TANGENT,
     LOG,
     LN,
-    SQRT
+    SQRT,
+    XPOW2,
+    XPOWY
 }

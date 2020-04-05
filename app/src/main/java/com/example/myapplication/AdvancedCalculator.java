@@ -11,6 +11,7 @@ import android.widget.TextView;
 import static java.lang.Math.cos;
 import static java.lang.Math.log;
 import static java.lang.Math.log10;
+import static java.lang.Math.pow;
 import static java.lang.Math.sin;
 import static java.lang.Math.sqrt;
 import static java.lang.Math.tan;
@@ -157,10 +158,20 @@ public class AdvancedCalculator extends Activity implements View.OnClickListener
                 onScreenSignView.setText(R.string.ln);
                 break;
             case R.id.button_xsquared:
-                //x^2
+                if (onScreenValueView.getText().length() == 0) {
+                    break;
+                }
+                currentOperation = Operation.XPOW2;
+                firstOperand = Double.parseDouble(onScreenValueView.getText().toString());
+                onScreenSignView.setText(R.string.x_squared);
                 break;
             case R.id.button_xtothepower:
-                //x^y
+                if (onScreenValueView.getText().length() == 0) {
+                    break;
+                }
+                currentOperation = Operation.XPOWY;
+                firstOperand = Double.parseDouble(onScreenValueView.getText().toString());
+                onScreenSignView.setText(R.string.x_power_y);
                 break;
             case R.id.button_sign:
                 if (onScreenValueView.getText().toString().length() <= 0
@@ -189,7 +200,8 @@ public class AdvancedCalculator extends Activity implements View.OnClickListener
                         && currentOperation != Operation.TANGENT
                         && currentOperation != Operation.LOG
                         && currentOperation != Operation.LN
-                        && currentOperation != Operation.SQRT) {
+                        && currentOperation != Operation.SQRT
+                        && currentOperation != Operation.XPOW2) {
                     break;
                 }
                 if (currentOperation != Operation.NONE) {
@@ -230,6 +242,13 @@ public class AdvancedCalculator extends Activity implements View.OnClickListener
                         break;
                     case SQRT:
                         onScreenValueView.setText(String.valueOf(sqrt(firstOperand)));
+                        break;
+                    case XPOW2:
+                        onScreenValueView.setText(String.valueOf(pow(firstOperand, 2)));
+                        break;
+                    case XPOWY:
+                        onScreenValueView.setText(String.valueOf(pow(firstOperand, secondOperand)));
+                        break;
                 }
                 onScreenSignView.setText("");
                 if (!onScreenValueView.getText().toString().equals("ERROR")) {
