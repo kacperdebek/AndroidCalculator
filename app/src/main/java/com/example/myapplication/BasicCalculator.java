@@ -107,6 +107,9 @@ public class BasicCalculator extends Activity implements View.OnClickListener {
                 }
                 break;
             case R.id.button_equals:
+                if (!secondNumInputStarted) {
+                    break;
+                }
                 if (currentOperation != Operation.NONE) {
                     secondOperand = Double.parseDouble(onScreenValueView.getText().toString());
                 }
@@ -132,6 +135,7 @@ public class BasicCalculator extends Activity implements View.OnClickListener {
                 onScreenSignView.setText("");
                 firstOperand = Double.parseDouble(onScreenValueView.getText().toString());
                 secondNumInputStarted = false;
+                currentOperation = Operation.NONE;
                 break;
             default:
                 break;
