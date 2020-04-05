@@ -8,5 +8,7 @@ public enum Operation {
     DIVIDE,
     SINE,
     COSINE,
-    TANGENT
+    TANGENT,
+    LOG,
+    LN
 }

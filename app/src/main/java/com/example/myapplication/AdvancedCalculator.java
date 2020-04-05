@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import static java.lang.Math.cos;
+import static java.lang.Math.log;
+import static java.lang.Math.log10;
 import static java.lang.Math.sin;
 import static java.lang.Math.tan;
 
@@ -23,7 +25,6 @@ public class AdvancedCalculator extends Activity implements View.OnClickListener
     @Override
     public void onClick(View v) {
         String resName = getResources().getResourceEntryName(v.getId());
-        System.out.println(currentOperation + ", " + resName.charAt(resName.length() - 1) + ", " + secondNumInputStarted);
         if (currentOperation != Operation.NONE && Character.isDigit(resName.charAt(resName.length() - 1)) && !secondNumInputStarted) {
             onScreenValueView.setText("");
             secondNumInputStarted = true;
@@ -139,10 +140,20 @@ public class AdvancedCalculator extends Activity implements View.OnClickListener
                 onScreenSignView.setText(R.string.tan);
                 break;
             case R.id.button_log:
-                //logarithmic function
+                if (onScreenValueView.getText().length() == 0) {
+                    break;
+                }
+                currentOperation = Operation.LOG;
+                firstOperand = Double.parseDouble(onScreenValueView.getText().toString());
+                onScreenSignView.setText(R.string.log);
                 break;
             case R.id.button_ln:
-                //natural logarithmic function
+                if (onScreenValueView.getText().length() == 0) {
+                    break;
+                }
+                currentOperation = Operation.LN;
+                firstOperand = Double.parseDouble(onScreenValueView.getText().toString());
+                onScreenSignView.setText(R.string.ln);
                 break;
             case R.id.button_xsquared:
                 //x^2
@@ -169,7 +180,9 @@ public class AdvancedCalculator extends Activity implements View.OnClickListener
                 if (!secondNumInputStarted
                         && currentOperation != Operation.SINE
                         && currentOperation != Operation.COSINE
-                        && currentOperation != Operation.TANGENT) {
+                        && currentOperation != Operation.TANGENT
+                        && currentOperation != Operation.LOG
+                        && currentOperation != Operation.LN) {
                     break;
                 }
                 if (currentOperation != Operation.NONE) {
@@ -201,6 +214,12 @@ public class AdvancedCalculator extends Activity implements View.OnClickListener
                         break;
                     case TANGENT:
                         onScreenValueView.setText(String.valueOf(tan(firstOperand)));
+                        break;
+                    case LOG:
+                        onScreenValueView.setText(String.valueOf(log10(firstOperand)));
+                        break;
+                    case LN:
+                        onScreenValueView.setText(String.valueOf(log(firstOperand)));
                         break;
                 }
                 onScreenSignView.setText("");
