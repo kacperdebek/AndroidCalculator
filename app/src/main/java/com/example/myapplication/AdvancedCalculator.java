@@ -106,6 +106,33 @@ public class AdvancedCalculator extends Activity implements View.OnClickListener
                     onScreenValueView.setText(current.substring(0, current.length() - 1));
                 }
                 break;
+            case R.id.button_sin:
+                //sine function
+                break;
+            case R.id.button_cos:
+                //cosine function
+                break;
+            case R.id.button_tan:
+                //tangent function
+                break;
+            case R.id.button_log:
+                //logarithmic function
+                break;
+            case R.id.button_ln:
+                //natural logarithmic function
+                break;
+            case R.id.button_xsquared:
+                //x^2
+                break;
+            case R.id.button_xtothepower:
+                //x^y
+                break;
+            case R.id.button_sign:
+                //change sign (+/-)
+                break;
+            case R.id.button_sqrt:
+                //square root
+                break;
             case R.id.button_equals:
                 if (currentOperation != Operation.NONE) {
                     secondOperand = Double.parseDouble(onScreenValueView.getText().toString());
@@ -200,5 +227,31 @@ public class AdvancedCalculator extends Activity implements View.OnClickListener
         Button back = findViewById(R.id.button_back);
         back.setOnClickListener(this);
 
+        Button sine = findViewById(R.id.button_sin);
+        sine.setOnClickListener(this);
+
+        Button cosine = findViewById(R.id.button_cos);
+        cosine.setOnClickListener(this);
+
+        Button log = findViewById(R.id.button_log);
+        log.setOnClickListener(this);
+
+        Button ln = findViewById(R.id.button_ln);
+        ln.setOnClickListener(this);
+
+        Button signChange = findViewById(R.id.button_sign);
+        signChange.setOnClickListener(this);
+
+        Button squareRoot = findViewById(R.id.button_sqrt);
+        squareRoot.setOnClickListener(this);
+
+        Button xPowerY = findViewById(R.id.button_xtothepower);
+        xPowerY.setOnClickListener(this);
+
+        Button xSquared = findViewById(R.id.button_xsquared);
+        xSquared.setOnClickListener(this);
+
+        Button tangent = findViewById(R.id.button_tan);
+        tangent.setOnClickListener(this);
     }
 }
