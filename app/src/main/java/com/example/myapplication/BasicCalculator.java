@@ -19,12 +19,12 @@ public class BasicCalculator extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         String resName = getResources().getResourceEntryName(v.getId());
-        if (onScreenValueView.getText().length() > 9 && Character.isDigit(resName.charAt(resName.length() - 1))) { //restrict input screen to 10 characters
-            return;
-        }
         if (currentOperation != Operation.NONE && Character.isDigit(resName.charAt(resName.length() - 1)) && !secondNumInputStarted) {
             onScreenValueView.setText("");
             secondNumInputStarted = true;
+        }
+        if (onScreenValueView.getText().length() > 9 && Character.isDigit(resName.charAt(resName.length() - 1))) { //restrict input screen to 10 characters
+            return;
         }
         if (onScreenValueView.getText().toString().equals("ERROR") && !resName.equals("button_clear")) {
             return;

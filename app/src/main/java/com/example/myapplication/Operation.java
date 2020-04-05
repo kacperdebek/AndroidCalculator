@@ -5,5 +5,8 @@ public enum Operation {
     ADD,
     SUBTRACT,
     MULTIPLY,
-    DIVIDE
+    DIVIDE,
+    SINE,
+    COSINE,
+    TANGENT
 }

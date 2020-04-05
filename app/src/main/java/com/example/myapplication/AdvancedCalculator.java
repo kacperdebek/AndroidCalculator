@@ -8,6 +8,10 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
+import static java.lang.Math.cos;
+import static java.lang.Math.sin;
+import static java.lang.Math.tan;
+
 public class AdvancedCalculator extends Activity implements View.OnClickListener {
     private Operation currentOperation = Operation.NONE;
     private TextView onScreenValueView;
@@ -19,12 +23,13 @@ public class AdvancedCalculator extends Activity implements View.OnClickListener
     @Override
     public void onClick(View v) {
         String resName = getResources().getResourceEntryName(v.getId());
-        if (onScreenValueView.getText().length() > 9 && Character.isDigit(resName.charAt(resName.length() - 1))) { //restrict input screen to 10 characters
-            return;
-        }
+        System.out.println(currentOperation + ", " + resName.charAt(resName.length() - 1) + ", " + secondNumInputStarted);
         if (currentOperation != Operation.NONE && Character.isDigit(resName.charAt(resName.length() - 1)) && !secondNumInputStarted) {
             onScreenValueView.setText("");
             secondNumInputStarted = true;
+        }
+        if (onScreenValueView.getText().length() > 9 && Character.isDigit(resName.charAt(resName.length() - 1))) { //restrict input screen to 10 characters
+            return;
         }
         if (onScreenValueView.getText().toString().equals("ERROR") && !resName.equals("button_clear")) {
             return;
@@ -110,13 +115,28 @@ public class AdvancedCalculator extends Activity implements View.OnClickListener
                 }
                 break;
             case R.id.button_sin:
-                //sine function
+                if (onScreenValueView.getText().length() == 0) {
+                    break;
+                }
+                currentOperation = Operation.SINE;
+                firstOperand = Double.parseDouble(onScreenValueView.getText().toString());
+                onScreenSignView.setText(R.string.sin);
                 break;
             case R.id.button_cos:
-                //cosine function
+                if (onScreenValueView.getText().length() == 0) {
+                    break;
+                }
+                currentOperation = Operation.COSINE;
+                firstOperand = Double.parseDouble(onScreenValueView.getText().toString());
+                onScreenSignView.setText(R.string.cos);
                 break;
             case R.id.button_tan:
-                //tangent function
+                if (onScreenValueView.getText().length() == 0) {
+                    break;
+                }
+                currentOperation = Operation.TANGENT;
+                firstOperand = Double.parseDouble(onScreenValueView.getText().toString());
+                onScreenSignView.setText(R.string.tan);
                 break;
             case R.id.button_log:
                 //logarithmic function
@@ -137,7 +157,7 @@ public class AdvancedCalculator extends Activity implements View.OnClickListener
                 }
                 if (onScreenValueView.getText().charAt(0) == '-') {
                     onScreenValueView.setText(onScreenValueView.getText().toString().substring(1));
-                } else if (onScreenValueView.getText().length() <= 9) {
+                } else if (onScreenValueView.getText().length() <= 10) {
                     String updated = "-" + onScreenValueView.getText().toString();
                     onScreenValueView.setText(updated);
                 }
@@ -146,6 +166,12 @@ public class AdvancedCalculator extends Activity implements View.OnClickListener
                 //square root
                 break;
             case R.id.button_equals:
+                if (!secondNumInputStarted
+                        && currentOperation != Operation.SINE
+                        && currentOperation != Operation.COSINE
+                        && currentOperation != Operation.TANGENT) {
+                    break;
+                }
                 if (currentOperation != Operation.NONE) {
                     secondOperand = Double.parseDouble(onScreenValueView.getText().toString());
                 }
@@ -166,6 +192,15 @@ public class AdvancedCalculator extends Activity implements View.OnClickListener
                             onScreenValueView.setText(String.valueOf(firstOperand / secondOperand));
                         } else
                             onScreenValueView.setText(R.string._error);
+                        break;
+                    case SINE:
+                        onScreenValueView.setText(String.valueOf(sin(firstOperand)));
+                        break;
+                    case COSINE:
+                        onScreenValueView.setText(String.valueOf(cos(firstOperand)));
+                        break;
+                    case TANGENT:
+                        onScreenValueView.setText(String.valueOf(tan(firstOperand)));
                         break;
                 }
                 onScreenSignView.setText("");
