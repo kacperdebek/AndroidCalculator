@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.TextView;
 
 import static java.lang.Math.cos;
@@ -273,85 +272,40 @@ public class AdvancedCalculator extends Activity implements View.OnClickListener
         setContentView(R.layout.advancedcalc_layout);
         onScreenValueView = findViewById(R.id.onScreenValueView);
         onScreenSignView = findViewById(R.id.operationSign);
-        Button zero = findViewById(R.id.button_0);
-        zero.setOnClickListener(this);
 
-        Button one = findViewById(R.id.button_1);
-        one.setOnClickListener(this);
+        findViewById(R.id.button_0).setOnClickListener(this);
+        findViewById(R.id.button_1).setOnClickListener(this);
+        findViewById(R.id.button_2).setOnClickListener(this);
+        findViewById(R.id.button_3).setOnClickListener(this);
+        findViewById(R.id.button_4).setOnClickListener(this);
+        findViewById(R.id.button_5).setOnClickListener(this);
+        findViewById(R.id.button_6).setOnClickListener(this);
+        findViewById(R.id.button_7).setOnClickListener(this);
+        findViewById(R.id.button_8).setOnClickListener(this);
+        findViewById(R.id.button_9).setOnClickListener(this);
 
-        Button two = findViewById(R.id.button_2);
-        two.setOnClickListener(this);
+        findViewById(R.id.button_plus).setOnClickListener(this);
+        findViewById(R.id.button_minus).setOnClickListener(this);
+        findViewById(R.id.button_division).setOnClickListener(this);
+        findViewById(R.id.button_x).setOnClickListener(this);
 
-        Button three = findViewById(R.id.button_3);
-        three.setOnClickListener(this);
+        findViewById(R.id.button_clear).setOnClickListener(this);
+        findViewById(R.id.button_back).setOnClickListener(this);
+        findViewById(R.id.button_sign).setOnClickListener(this);
+        findViewById(R.id.button_dot).setOnClickListener(this);
+        findViewById(R.id.button_equals).setOnClickListener(this);
 
-        Button four = findViewById(R.id.button_4);
-        four.setOnClickListener(this);
+        findViewById(R.id.button_sin).setOnClickListener(this);
+        findViewById(R.id.button_cos).setOnClickListener(this);
+        findViewById(R.id.button_tan).setOnClickListener(this);
 
-        Button five = findViewById(R.id.button_5);
-        five.setOnClickListener(this);
+        findViewById(R.id.button_log).setOnClickListener(this);
+        findViewById(R.id.button_ln).setOnClickListener(this);
 
-        Button six = findViewById(R.id.button_6);
-        six.setOnClickListener(this);
+        findViewById(R.id.button_sqrt).setOnClickListener(this);
 
-        Button seven = findViewById(R.id.button_7);
-        seven.setOnClickListener(this);
+        findViewById(R.id.button_xtothepower).setOnClickListener(this);
+        findViewById(R.id.button_xsquared).setOnClickListener(this);
 
-        Button eight = findViewById(R.id.button_8);
-        eight.setOnClickListener(this);
-
-        Button nine = findViewById(R.id.button_9);
-        nine.setOnClickListener(this);
-
-        Button plus = findViewById(R.id.button_plus);
-        plus.setOnClickListener(this);
-
-        Button minus = findViewById(R.id.button_minus);
-        minus.setOnClickListener(this);
-
-        Button divide = findViewById(R.id.button_division);
-        divide.setOnClickListener(this);
-
-        Button dot = findViewById(R.id.button_dot);
-        dot.setOnClickListener(this);
-
-        Button equals = findViewById(R.id.button_equals);
-        equals.setOnClickListener(this);
-
-        Button multi = findViewById(R.id.button_x);
-        multi.setOnClickListener(this);
-
-        Button clear = findViewById(R.id.button_clear);
-        clear.setOnClickListener(this);
-
-        Button back = findViewById(R.id.button_back);
-        back.setOnClickListener(this);
-
-        Button sine = findViewById(R.id.button_sin);
-        sine.setOnClickListener(this);
-
-        Button cosine = findViewById(R.id.button_cos);
-        cosine.setOnClickListener(this);
-
-        Button log = findViewById(R.id.button_log);
-        log.setOnClickListener(this);
-
-        Button ln = findViewById(R.id.button_ln);
-        ln.setOnClickListener(this);
-
-        Button signChange = findViewById(R.id.button_sign);
-        signChange.setOnClickListener(this);
-
-        Button squareRoot = findViewById(R.id.button_sqrt);
-        squareRoot.setOnClickListener(this);
-
-        Button xPowerY = findViewById(R.id.button_xtothepower);
-        xPowerY.setOnClickListener(this);
-
-        Button xSquared = findViewById(R.id.button_xsquared);
-        xSquared.setOnClickListener(this);
-
-        Button tangent = findViewById(R.id.button_tan);
-        tangent.setOnClickListener(this);
     }
 }
