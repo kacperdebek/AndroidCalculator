@@ -3,8 +3,10 @@ package com.example.myapplication;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class BasicCalculator extends Activity implements View.OnClickListener {
@@ -176,26 +178,11 @@ public class BasicCalculator extends Activity implements View.OnClickListener {
         onScreenValueView = findViewById(R.id.onScreenValueView);
         onScreenSignView = findViewById(R.id.operationSign);
 
-        findViewById(R.id.button_0).setOnClickListener(this);
-        findViewById(R.id.button_1).setOnClickListener(this);
-        findViewById(R.id.button_2).setOnClickListener(this);
-        findViewById(R.id.button_3).setOnClickListener(this);
-        findViewById(R.id.button_4).setOnClickListener(this);
-        findViewById(R.id.button_5).setOnClickListener(this);
-        findViewById(R.id.button_6).setOnClickListener(this);
-        findViewById(R.id.button_7).setOnClickListener(this);
-        findViewById(R.id.button_8).setOnClickListener(this);
-        findViewById(R.id.button_9).setOnClickListener(this);
-
-        findViewById(R.id.button_plus).setOnClickListener(this);
-        findViewById(R.id.button_minus).setOnClickListener(this);
-        findViewById(R.id.button_division).setOnClickListener(this);
-        findViewById(R.id.button_x).setOnClickListener(this);
-
-        findViewById(R.id.button_clear).setOnClickListener(this);
-        findViewById(R.id.button_back).setOnClickListener(this);
-        findViewById(R.id.button_sign).setOnClickListener(this);
-        findViewById(R.id.button_dot).setOnClickListener(this);
-        findViewById(R.id.button_equals).setOnClickListener(this);
+        ViewGroup group = findViewById(R.id.myrootlayout);
+        View v;
+        for (int i = 0; i < group.getChildCount(); i++) {
+            v = group.getChildAt(i);
+            if (v instanceof Button) v.setOnClickListener(this);
+        }
     }
 }
