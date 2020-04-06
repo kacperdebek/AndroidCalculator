@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import static java.lang.Math.cos;
 import static java.lang.Math.log;
@@ -35,8 +37,14 @@ public class AdvancedCalculator extends Activity implements View.OnClickListener
         if (onScreenValueView.getText().length() > 10 && Character.isDigit(resName.charAt(resName.length() - 1))) { //restrict input screen to 11 characters
             return;
         }
-        if (onScreenValueView.getText().toString().equals("ERROR") && !resName.equals("button_clear")) {
-            return;
+        if (onScreenValueView.getText().toString().equals("ERROR")) {
+            if ((resName.equals("button_clear") || Character.isDigit(resName.charAt(resName.length() - 1)))) {
+                secondNumInputStarted = false;
+                currentOperation = Operation.NONE;
+                onScreenValueView.setText("");
+            } else {
+                return;
+            }
         }
         try {
             if (Character.isDigit(resName.charAt(resName.length() - 1))) {
@@ -162,8 +170,10 @@ public class AdvancedCalculator extends Activity implements View.OnClickListener
                             case DIVIDE:
                                 if (secondOperand != 0) {
                                     result = String.valueOf(firstOperand / secondOperand);
-                                } else
+                                } else {
                                     result = "ERROR";
+                                    createShortToastPopup("Division by zero");
+                                }
                                 break;
                             case SINE:
                                 result = String.valueOf(sin(firstOperand));
@@ -205,6 +215,7 @@ public class AdvancedCalculator extends Activity implements View.OnClickListener
                 }
             }
         } catch (NumberFormatException nfe) {
+            createShortToastPopup("Illegal argument");
             onScreenValueView.setText(R.string._error);
         }
     }
@@ -229,5 +240,10 @@ public class AdvancedCalculator extends Activity implements View.OnClickListener
     private void setOnScreenValues(Operation operation) {
         currentOperation = operation;
         firstOperand = Double.parseDouble(onScreenValueView.getText().toString());
+    }
+
+    private void createShortToastPopup(String message) {
+        Context context = getApplicationContext();
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
 }
