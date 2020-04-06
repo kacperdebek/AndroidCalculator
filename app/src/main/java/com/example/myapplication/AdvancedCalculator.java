@@ -251,6 +251,7 @@ public class AdvancedCalculator extends Activity implements View.OnClickListener
                         break;
                 }
                 result = result.contains(".") ? result.replaceAll("0*$", "").replaceAll("\\.$", "") : result; //remove trailing zeroes
+                result = CalculatorUtills.limitOutputLength(result);
                 onScreenValueView.setText(result);
                 onScreenSignView.setText("");
                 if (!onScreenValueView.getText().toString().equals("ERROR")) {
