@@ -38,6 +38,10 @@ public class BasicCalculator extends Activity implements View.OnClickListener {
                 return;
             }
         }
+        if ((onScreenValueView.getText().toString().equals("NaN") || onScreenValueView.getText().toString().contains("Infinity"))
+                && (resName.equals("button_back"))) {
+            return;
+        }
         try {
             if (Character.isDigit(resName.charAt(resName.length() - 1))) {
                 onScreenValueView.append(String.valueOf(resName.charAt(resName.length() - 1)));
