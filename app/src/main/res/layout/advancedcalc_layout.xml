@@ -329,11 +329,12 @@
 
     <TextView
         android:id="@+id/operationSign"
-        android:layout_width="33dp"
+        android:layout_width="34dp"
         android:layout_height="20dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginRight="56dp"
+        android:freezesText="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

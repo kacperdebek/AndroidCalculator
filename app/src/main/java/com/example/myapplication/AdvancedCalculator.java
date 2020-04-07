@@ -223,9 +223,12 @@ public class AdvancedCalculator extends Activity implements View.OnClickListener
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.advancedcalc_layout);
+
+
         onScreenValueView = findViewById(R.id.onScreenValueView);
         onScreenSignView = findViewById(R.id.operationSign);
 
@@ -235,7 +238,22 @@ public class AdvancedCalculator extends Activity implements View.OnClickListener
             v = group.getChildAt(i);
             if (v instanceof Button) v.setOnClickListener(this);
         }
+
+        if (savedInstanceState != null) {
+            secondNumInputStarted = savedInstanceState.getBoolean("secondInputState");
+            firstOperand = savedInstanceState.getDouble("firstOperandState");
+            currentOperation = (Operation) savedInstanceState.getSerializable("currentOperation");
+        }
     }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putBoolean("secondInputState", secondNumInputStarted);
+        outState.putDouble("firstOperandState", firstOperand);
+        outState.putSerializable("currentOperation", currentOperation);
+        super.onSaveInstanceState(outState);
+    }
+
 
     private void setOnScreenValues(Operation operation) {
         currentOperation = operation;

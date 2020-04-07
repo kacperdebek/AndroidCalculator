@@ -157,6 +157,20 @@ public class BasicCalculator extends Activity implements View.OnClickListener {
             v = group.getChildAt(i);
             if (v instanceof Button) v.setOnClickListener(this);
         }
+
+        if (savedInstanceState != null) {
+            secondNumInputStarted = savedInstanceState.getBoolean("secondInputState");
+            firstOperand = savedInstanceState.getDouble("firstOperandState");
+            currentOperation = (Operation) savedInstanceState.getSerializable("currentOperation");
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putBoolean("secondInputState", secondNumInputStarted);
+        outState.putDouble("firstOperandState", firstOperand);
+        outState.putSerializable("currentOperation", currentOperation);
+        super.onSaveInstanceState(outState);
     }
 
     private void setOnScreenValues(Operation operation) {
