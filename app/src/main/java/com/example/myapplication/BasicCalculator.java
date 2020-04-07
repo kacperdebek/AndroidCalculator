@@ -125,7 +125,9 @@ public class BasicCalculator extends Activity implements View.OnClickListener {
                                 }
                                 break;
                         }
-                        result = result.contains(".") ? result.replaceAll("0*$", "").replaceAll("\\.$", "") : result; //remove trailing zeroes
+                        result = result.contains(".") ?
+                                result.contains("E") ? result.replaceAll("0*E", "E").replaceAll("\\.$", "")
+                                        : result.replaceAll("0*$", "").replaceAll("\\.$", "") : result; //remove trailing zeroes
                         result = CalculatorUtills.limitOutputLength(result);
                         onScreenValueView.setText(result);
                         onScreenSignView.setText("");
