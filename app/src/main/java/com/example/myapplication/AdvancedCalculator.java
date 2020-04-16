@@ -207,7 +207,7 @@ public class AdvancedCalculator extends Activity implements View.OnClickListener
                         result = result.contains(".") ?
                                 result.contains("E") ? result.replaceAll("0*E", "E").replaceAll("\\.$", "")
                                         : result.replaceAll("0*$", "").replaceAll("\\.$", "") : result; //remove trailing zeroes
-                        result = CalculatorUtills.limitOutputLength(result);
+                        result = CalculatorUtills.limitOutputLength(result, 11);
                         onScreenValueView.setText(result);
                         onScreenSignView.setText("");
                         if (!onScreenValueView.getText().toString().equals("ERROR")) {
@@ -244,7 +244,6 @@ public class AdvancedCalculator extends Activity implements View.OnClickListener
             v = group.getChildAt(i);
             if (v instanceof Button) v.setOnClickListener(this);
         }
-
         if (savedInstanceState != null) {
             secondNumInputStarted = savedInstanceState.getBoolean("secondInputState");
             firstOperand = savedInstanceState.getDouble("firstOperandState");
@@ -259,7 +258,6 @@ public class AdvancedCalculator extends Activity implements View.OnClickListener
         outState.putSerializable("currentOperation", currentOperation);
         super.onSaveInstanceState(outState);
     }
-
 
     private void setOnScreenValues(Operation operation) {
         currentOperation = operation;

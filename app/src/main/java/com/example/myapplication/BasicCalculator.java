@@ -128,7 +128,7 @@ public class BasicCalculator extends Activity implements View.OnClickListener {
                         result = result.contains(".") ?
                                 result.contains("E") ? result.replaceAll("0*E", "E").replaceAll("\\.$", "")
                                         : result.replaceAll("0*$", "").replaceAll("\\.$", "") : result; //remove trailing zeroes
-                        result = CalculatorUtills.limitOutputLength(result);
+                        result = CalculatorUtills.limitOutputLength(result, 11);
                         onScreenValueView.setText(result);
                         onScreenSignView.setText("");
                         if (!onScreenValueView.getText().toString().equals("ERROR")) {

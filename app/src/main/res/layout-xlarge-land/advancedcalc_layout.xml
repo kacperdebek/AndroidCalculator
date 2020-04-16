@@ -106,18 +106,19 @@
 
     <Button
         android:id="@+id/button_x"
-        android:layout_width="134dp"
+        android:layout_width="151dp"
         android:layout_height="120dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:text="@string/_x"
         android:textSize="50sp"
         app:layout_constraintBottom_toTopOf="@+id/button_minus"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/button_division" />
 
     <Button
         android:id="@+id/button_division"
-        android:layout_width="133dp"
+        android:layout_width="151dp"
         android:layout_height="120dp"
         android:text="@string/_division"
         android:textSize="50sp"
@@ -128,14 +129,14 @@
 
     <Button
         android:id="@+id/button_sign"
-        android:layout_width="133dp"
+        android:layout_width="151dp"
         android:layout_height="120dp"
         android:text="@string/plus_minus"
         android:textSize="50sp"
         app:layout_constraintBottom_toTopOf="@+id/button_8"
         app:layout_constraintEnd_toStartOf="@+id/button_sin"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button_percent" />
+        app:layout_constraintStart_toEndOf="@+id/button_clear" />
 
     <Button
         android:id="@+id/button_sqrt"
@@ -172,8 +173,8 @@
 
     <Button
         android:id="@+id/button_sin"
-        android:layout_width="133dp"
-        android:layout_height="119dp"
+        android:layout_width="151dp"
+        android:layout_height="120dp"
         android:text="@string/sin"
         android:textSize="40sp"
         app:layout_constraintBottom_toTopOf="@+id/button_9"
@@ -183,7 +184,7 @@
 
     <Button
         android:id="@+id/button_cos"
-        android:layout_width="134dp"
+        android:layout_width="151dp"
         android:layout_height="120dp"
         android:text="@string/cos"
         android:textSize="40sp"
@@ -194,7 +195,7 @@
 
     <Button
         android:id="@+id/button_tan"
-        android:layout_width="133dp"
+        android:layout_width="151dp"
         android:layout_height="120dp"
         android:text="@string/tan"
         android:textSize="40sp"
@@ -307,46 +308,34 @@
 
     <Button
         android:id="@+id/button_clear"
-        android:layout_width="133dp"
+        android:layout_width="151dp"
         android:layout_height="120dp"
         android:text="@string/_c"
         android:textSize="50sp"
         app:layout_constraintBottom_toTopOf="@+id/button_6"
-        app:layout_constraintEnd_toStartOf="@+id/button_percent"
+        app:layout_constraintEnd_toStartOf="@+id/button_sign"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/button_back" />
 
     <Button
         android:id="@+id/button_back"
-        android:layout_width="133dp"
+        android:layout_width="151dp"
         android:layout_height="120dp"
         android:text="@string/_backarrow"
         android:textSize="50sp"
         app:layout_constraintBottom_toTopOf="@+id/button_5"
         app:layout_constraintEnd_toStartOf="@+id/button_clear"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/button_percent"
-        android:layout_width="134dp"
-        android:layout_height="120dp"
-        android:text="@string/percent"
-        android:textSize="40sp"
-        app:layout_constraintBottom_toTopOf="@+id/button_7"
-        app:layout_constraintEnd_toStartOf="@+id/button_sign"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button_clear" />
 
     <TextView
         android:id="@+id/operationSign"
         android:layout_width="59dp"
         android:layout_height="31dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="44dp"
-        android:layout_marginRight="44dp"
-        android:freezesText="true"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
         android:text=""
+        android:freezesText="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

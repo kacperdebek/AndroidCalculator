@@ -13,5 +13,5 @@ public enum Operation {
     LN,
     SQRT,
     XPOW2,
-    XPOWY
+    XPOWY,
 }
