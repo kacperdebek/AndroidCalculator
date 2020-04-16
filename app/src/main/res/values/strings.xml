@@ -33,4 +33,5 @@
     <string name="plus_minus">±</string>
     <string name="exit">exit</string>
     <string name="description">Calculator App\nMade by Kacper Dębek\n\nCalculator provides simple and advanced mathematical functions.\n • Perform basic calculations such as addition, subtraction, multiplication, and division\n • Do scientific operations such as trigonometric and logarithmic functions</string>
+    <string name="percent">%</string>
 </resources>

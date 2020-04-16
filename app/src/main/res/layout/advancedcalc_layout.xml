@@ -109,12 +109,23 @@
 
     <Button
         android:id="@+id/button_sign"
-        android:layout_width="110dp"
+        android:layout_width="80dp"
         android:layout_height="60dp"
         android:text="@string/plus_minus"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/button_division"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/button_percent" />
+
+    <Button
+        android:id="@+id/button_percent"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
+        android:text="@string/percent"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/button_tan"
+        app:layout_constraintEnd_toStartOf="@+id/button_sign"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/button_clear" />
 
@@ -307,24 +318,24 @@
 
     <Button
         android:id="@+id/button_clear"
-        android:layout_width="109dp"
+        android:layout_width="80dp"
         android:layout_height="60dp"
         android:text="@string/_c"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/button_cos"
-        app:layout_constraintEnd_toStartOf="@+id/button_sign"
+        app:layout_constraintEnd_toStartOf="@+id/button_percent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/button_back" />
 
     <Button
         android:id="@+id/button_back"
-        android:layout_width="109dp"
+        android:layout_width="80dp"
         android:layout_height="60dp"
         android:text="@string/_backarrow"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/button_sin"
         app:layout_constraintEnd_toStartOf="@+id/button_clear"
-        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
