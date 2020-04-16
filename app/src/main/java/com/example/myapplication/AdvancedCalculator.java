@@ -26,6 +26,7 @@ public class AdvancedCalculator extends Activity implements View.OnClickListener
     private double firstOperand = 0.0;
     private double secondOperand = 0.0;
     private boolean secondNumInputStarted = false;
+    private Button equals;
 
     @Override
     public void onClick(View v) {
@@ -57,21 +58,25 @@ public class AdvancedCalculator extends Activity implements View.OnClickListener
                 switch (v.getId()) {
                     case R.id.button_x:
                         if (onScreenValueView.getText().length() == 0) break;
+                        if (secondNumInputStarted) generateResult();
                         setOnScreenValues(Operation.MULTIPLY);
                         onScreenSignView.setText("x");
                         break;
                     case R.id.button_plus:
                         if (onScreenValueView.getText().length() == 0) break;
+                        if (secondNumInputStarted) generateResult();
                         setOnScreenValues(Operation.ADD);
                         onScreenSignView.setText("+");
                         break;
                     case R.id.button_minus:
                         if (onScreenValueView.getText().length() == 0) break;
+                        if (secondNumInputStarted) generateResult();
                         setOnScreenValues(Operation.SUBTRACT);
                         onScreenSignView.setText("-");
                         break;
                     case R.id.button_division:
                         if (onScreenValueView.getText().length() == 0) break;
+                        if (secondNumInputStarted) generateResult();
                         setOnScreenValues(Operation.DIVIDE);
                         onScreenSignView.setText("/");
                         break;
@@ -95,35 +100,36 @@ public class AdvancedCalculator extends Activity implements View.OnClickListener
                     case R.id.button_sin:
                         if (onScreenValueView.getText().length() == 0) break;
                         setOnScreenValues(Operation.SINE);
-                        onScreenSignView.setText(R.string.sin);
+                        generateResult();
                         break;
                     case R.id.button_cos:
                         if (onScreenValueView.getText().length() == 0) break;
                         setOnScreenValues(Operation.COSINE);
-                        onScreenSignView.setText(R.string.cos);
+                        generateResult();
                         break;
                     case R.id.button_tan:
                         if (onScreenValueView.getText().length() == 0) break;
                         setOnScreenValues(Operation.TANGENT);
-                        onScreenSignView.setText(R.string.tan);
+                        generateResult();
                         break;
                     case R.id.button_log:
                         if (onScreenValueView.getText().length() == 0) break;
                         setOnScreenValues(Operation.LOG);
-                        onScreenSignView.setText(R.string.log);
+                        generateResult();
                         break;
                     case R.id.button_ln:
                         if (onScreenValueView.getText().length() == 0) break;
                         setOnScreenValues(Operation.LN);
-                        onScreenSignView.setText(R.string.ln);
+                        generateResult();
                         break;
                     case R.id.button_xsquared:
                         if (onScreenValueView.getText().length() == 0) break;
                         setOnScreenValues(Operation.XPOW2);
-                        onScreenSignView.setText(R.string.x_squared);
+                        generateResult();
                         break;
                     case R.id.button_xtothepower:
                         if (onScreenValueView.getText().length() == 0) break;
+                        if (secondNumInputStarted) generateResult();
                         setOnScreenValues(Operation.XPOWY);
                         onScreenSignView.setText(R.string.x_power_y);
                         break;
@@ -142,7 +148,7 @@ public class AdvancedCalculator extends Activity implements View.OnClickListener
                     case R.id.button_sqrt:
                         if (onScreenValueView.getText().length() == 0) break;
                         setOnScreenValues(Operation.SQRT);
-                        onScreenSignView.setText(R.string.sqrt);
+                        generateResult();
                         break;
                     case R.id.button_equals:
                         if (!secondNumInputStarted
@@ -244,6 +250,10 @@ public class AdvancedCalculator extends Activity implements View.OnClickListener
             v = group.getChildAt(i);
             if (v instanceof Button) v.setOnClickListener(this);
         }
+
+        equals = findViewById(R.id.button_equals);
+        equals.setOnClickListener(this);
+
         if (savedInstanceState != null) {
             secondNumInputStarted = savedInstanceState.getBoolean("secondInputState");
             firstOperand = savedInstanceState.getDouble("firstOperandState");
@@ -267,5 +277,9 @@ public class AdvancedCalculator extends Activity implements View.OnClickListener
     private void createShortToastPopup(String message) {
         Context context = getApplicationContext();
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+    }
+
+    private void generateResult() {
+        equals.performClick();
     }
 }

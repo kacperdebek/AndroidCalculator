@@ -18,6 +18,7 @@ public class BasicCalculator extends Activity implements View.OnClickListener {
     private double firstOperand = 0.0;
     private double secondOperand = 0.0;
     private boolean secondNumInputStarted = false;
+    private Button equals;
 
     @Override
     public void onClick(View v) {
@@ -49,21 +50,25 @@ public class BasicCalculator extends Activity implements View.OnClickListener {
                 switch (v.getId()) {
                     case R.id.button_x:
                         if (onScreenValueView.getText().length() == 0) break;
+                        if (secondNumInputStarted) generateResult();
                         setOnScreenValues(Operation.MULTIPLY);
                         onScreenSignView.setText("x");
                         break;
                     case R.id.button_plus:
                         if (onScreenValueView.getText().length() == 0) break;
+                        if (secondNumInputStarted) generateResult();
                         setOnScreenValues(Operation.ADD);
                         onScreenSignView.setText("+");
                         break;
                     case R.id.button_minus:
                         if (onScreenValueView.getText().length() == 0) break;
+                        if (secondNumInputStarted) generateResult();
                         setOnScreenValues(Operation.SUBTRACT);
                         onScreenSignView.setText("-");
                         break;
                     case R.id.button_division:
                         if (onScreenValueView.getText().length() == 0) break;
+                        if (secondNumInputStarted) generateResult();
                         setOnScreenValues(Operation.DIVIDE);
                         onScreenSignView.setText("/");
                         break;
@@ -157,6 +162,9 @@ public class BasicCalculator extends Activity implements View.OnClickListener {
         onScreenValueView = findViewById(R.id.onScreenValueView);
         onScreenSignView = findViewById(R.id.operationSign);
 
+        equals = findViewById(R.id.button_equals);
+        equals.setOnClickListener(this);
+
         ViewGroup group = findViewById(R.id.myrootlayout);
         View v;
         for (int i = 0; i < group.getChildCount(); i++) {
@@ -187,5 +195,9 @@ public class BasicCalculator extends Activity implements View.OnClickListener {
     private void createShortToastPopup(String message) {
         Context context = getApplicationContext();
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+    }
+
+    private void generateResult() {
+        equals.performClick();
     }
 }
